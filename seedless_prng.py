@@ -33,3 +33,4 @@ class SeedlessPRNG:
             output += hashlib.sha256(self.state + counter_bytes).digest()  # Generate new bytes using SHA-256
             self.counter += 1 # Increment counter for next call
         return output[:n] 
+    
