@@ -4,6 +4,7 @@
 
 After a massive research on the subject, I've stumbled upon a couple of  of "Coding Math" about building PseudoRandom Number Generators using JavaScript,
 where they implement Middle Square Method, multiple variants of LCG, Mersenne Twister and RC4. 
-So I decided to try on and build my own PRNG using built-in and non methods with Python. 
 
-![ESCHER-CUBE_23150-e1634139015930](https://github.com/user-attachments/assets/488b3eab-edf6-4f11-978f-ddabb6a046ad)
+So I decided to try on and build my own PRNGs using built-in and non methods with Python. 
+
+![metamorfose-I_cat298](https://github.com/user-attachments/assets/4cbeea1c-5b5e-4e29-bb22-a7c8c95a15c3)
