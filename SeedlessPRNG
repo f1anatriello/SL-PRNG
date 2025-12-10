@@ -1,7 +1,16 @@
 import hashlib # For hashing functions
 import struct # For packing and unpacking binary data
-import time # For time-based seeding
+import time 
 import os 
+
+''' This class implements a seedless pseudo-random number generator (PRNG). 
+It uses SHA-256 hashing to maintain an internal state and generate pseudo-random bytes.
+The PRNG does not require an initial seed, 
+making it suitable for applications where a seed is not available or desired.
+
+Inspired by: " Seedless PRNGs from Standard Hash Functions" by Boesgaard et al., 2015.
+    and "Cryptographic Hash Functions as Pseudo-Random Generators" by Coron et al., 2008.
+    and "Seedless Fruit is the Sweetest" by Dodis et al., 2013.'''
 
 class SeedlessPRNG:
     def __init__(self):
@@ -14,3 +23,13 @@ class SeedlessPRNG:
         '''Update the internal state with new data'''
 
         self.state = hashlib.sha256(self.state + data).digest() # Update state using SHA-256 hash
+
+    def next(self, n: int) -> bytes: 
+        '''Generate the next n bytes of pseudo-random data'''
+
+        output = b"" # Initialize the buffer for output bytes
+        while len(output) < n:
+            counter_bytes = struct.pack("<Q", self.counter)  # Pack counter as 8-byte little-endian 
+            output += hashlib.sha256(self.state + counter_bytes).digest()  # Generate new bytes using SHA-256
+            self.counter += 1 # Increment counter for next call
+        return output[:n] 
