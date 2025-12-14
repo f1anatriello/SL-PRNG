@@ -1,6 +1,6 @@
 import time
 import os
-from seedless_prng import SeedlessPRNG
+from monolithic_extractor import SeedlessPRNG
 
 def main():
     rng = SeedlessPRNG()

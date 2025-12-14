@@ -34,7 +34,7 @@ class TestPRNG(unittest.TestCase):
         self.assertNotEqual(output_before, output_after)
 
 if __name__ == "__main__":
-    from seedless_prng import SeedlessPRNG
+    from monolithic_extractor import SeedlessPRNG
     class TestSeedlessPRNG(TestPRNG):
         PRNG_CLASS = SeedlessPRNG
 
