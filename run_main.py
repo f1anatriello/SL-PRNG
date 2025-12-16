@@ -1,27 +1,11 @@
-import time
 import os
-from monolithic_extractor import SeedlessPRNG
+from lcg import SeedlessLCG
+from visual_test import visualize_random_pattern
 
 def main():
-    rng = SeedlessPRNG()
-
-    print("Start state:", rng.state.hex())
-
-    out1 = rng.next(16)
-    print("Output w/no entropy, just next:", out1.hex(), "\n")
-
-    # Raccogli un po’ di entropia semplice e fai refresh
-    entropy = time.time_ns().to_bytes(8, "little") + os.urandom(8)
-    rng.refresh(entropy)
-
-    out2 = rng.next(16)
-    print("Output w/some entropy:", out2.hex(), "\n")
-
-    out3 = rng.next(16)
-    print("Output w/lots of entropy:", out3.hex(), "\n")
-    
-    print("Final state:", rng.state.hex())
-
+    prng = SeedlessLCG()
+    prng.refresh(os.urandom(8))
+    visualize_random_pattern(prng, width=550, height=600)
 
 if __name__ == "__main__":
     main()
