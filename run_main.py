@@ -1,5 +1,7 @@
 import os
-from lcg import SeedlessLCG
+from prngs import SeedlessLCG
+from prngs import SeedlessRC4
+from prngs import SeedlessXorshift
 from visual_test import visualize_random_pattern
 
 def main():
