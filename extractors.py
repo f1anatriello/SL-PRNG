@@ -9,6 +9,7 @@ class MonolithicPRNG:
     using a monolithic extractor approach. 
     It maintains an internal state and generates pseudo-random bytes on demand. 
     The state can be refreshed with additional entropy data. '''
+    
     def __init__(self):
         '''Constructor to initialize the PRNG state'''
         self.state = b"\x00" * 32  # 256-bit state initialized to zero

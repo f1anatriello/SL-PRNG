@@ -39,9 +39,6 @@ class SeedlessRC4:
         self.key_set = True
 
     def next(self, n: int):
-        if not self.key_set:
-            raise ValueError("Key must be set via refresh() before generating output")
-
         output = bytearray()
         for _ in range(n):
             self.i = (self.i + 1) % 256
