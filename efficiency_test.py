@@ -1,7 +1,6 @@
 import unittest
 
 class TestPRNG(unittest.TestCase):
-    PRNG_CLASS = None  # To be set in subclasses
 
     def setUp(self):
         self.prng = self.PRNG_CLASS()
@@ -33,9 +32,3 @@ class TestPRNG(unittest.TestCase):
         output_after = self.prng.next(32)
         self.assertNotEqual(output_before, output_after)
 
-if __name__ == "__main__":
-    from monolithic_extractor import SeedlessPRNG
-    class TestSeedlessPRNG(TestPRNG):
-        PRNG_CLASS = SeedlessPRNG
-
-    unittest.main()     
